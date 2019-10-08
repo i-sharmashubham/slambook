@@ -1,0 +1,46 @@
+{% extends 'myslambook/base.html' %}
+
+{% block title %}My Slam Book : Share{% endblock %}
+
+
+
+{% block body %}            
+
+<div class="container center-align">
+    <div class="row">
+            <p class="grey-text"><h5><strong>Share your slam book link</strong></h5></p>
+                <div class="row">
+                                <input type="text" value="{{url}}" id="myInput">
+
+                                <div class="tooltip">
+                                <button class="btn waves-effect green" onclick="myFunction()" onmouseout="outFunc()">
+                                Copy Link To Clipboard
+                                </button>
+                                </div>                                
+                                
+                    
+                </div>
+                <p class="grey-text"><h5><strong>Share your slam book link</strong></h5></p>
+                <div class="row">
+                              <a href="https://api.whatsapp.com/send?text=Hey,%20*{{user.get_full_name}}*%20is%20requesting%20you%20to%20fill%20a%20*Slam%20Book*%20.%20Visit%20at%20{{url}}%20to%20fill%20it."  class="btn waves-effect green"><i class="material-icons">share</i>Share On Whatsapp</a>               
+                </div>
+                
+    </div>
+</div>
+
+<script>
+                function myFunction() {
+                  var copyText = document.getElementById("myInput");
+                  copyText.select();
+                  copyText.setSelectionRange(0, 99999);
+                  document.execCommand("copy");
+                  var tooltip = document.getElementById("myTooltip");
+                  tooltip.innerHTML = "Link Copied To Clipboard";
+                }
+                
+                function outFunc() {
+                  var tooltip = document.getElementById("myTooltip");
+                  tooltip.innerHTML = "Copy Link To Clipboard";
+                }
+</script>
+{% endblock %}

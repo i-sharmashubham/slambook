@@ -1,0 +1,61 @@
+{% extends 'myslambook/base.html' %}
+
+{% block title %}My Slam Book : Register{% endblock %}
+
+
+
+{% block body %}            
+
+<div class="container center-align">
+    <div class="row">
+            <p class="grey-text"><h5><strong>Create New Account</strong></h5></p>
+                <div class="row">
+                    <form class="col s12" action="" method="POST">
+                            {% csrf_token %}
+                    <div class="row">
+                        <div class="input-field col s6">
+                        {{form.first_name}}
+                        <label for="first_name">First Name</label>
+                        <span class="red-text">{{form.errors.first_name}}</span>
+                        </div>
+                        <div class="input-field col s6">
+                        {{form.last_name}}
+                        <label for="last_name">Last Name</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                        {{form.email}}
+                        <label for="email">Email</label>
+                        </div>
+                        <div class="input-field col s6">
+                        {{form.username}}
+                        <label for="email">Username</label>
+                        <span class="red-text">{{form.errors.username}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                        {{form.password1}}
+                        <label for="password">Password</label>
+                        <span class="red-text">{{form.errors.password1}}</span>
+                        </div>
+                        <div class="input-field col s6">
+                        {{form.password2}}
+                        <label for="password">Confirm Password</label>
+                        <span class="red-text">{{form.errors.password2}}</span>
+                        </div>
+                    </div>
+                    <div class="row right-align" >
+                            <a href="/myslambook/userlogin">
+                            <button class="btn waves-effect green" type="button" name="action">Already Have an Account? Login Here</button>
+                            </a>
+                            <button class="btn waves-effect blue" type="submit" name="action">Register</button>
+                    </div>
+                    </form>
+                </div>
+                
+    </div>
+</div>
+
+{% endblock %}

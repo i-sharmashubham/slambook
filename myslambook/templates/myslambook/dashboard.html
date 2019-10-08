@@ -1,0 +1,244 @@
+{% extends 'myslambook/base.html' %}
+
+{% block title %}My Slam Book : Dashboard{% endblock %}
+
+
+{% block birthday %}
+<li><a href='#' class="xyz" data-activates='dropdown1'><i class="material-icons left">cake</i>Birthdays</a></a></li>
+{% endblock %}
+
+{% block birthday1 %}
+<li class="divider"></li>
+<li><a class="xyz2" href='#' data-activates='dropdown2'><i class="material-icons left">cake</i>Birthdays</a></li>
+{% endblock %}
+
+
+{% block body %}
+
+{% now "m" as cm %}
+{% now "d" as cd %}
+
+  <ul id='dropdown1' class='dropdown-content'>
+    <li><a><i class="material-icons left">cake</i>Birthdays</a></li>
+    <li class="divider"></li>
+    <li class="divider"></li>
+    {% if all_slam %}
+    <li class="divider"></li>
+    <li><a><strong>Today</strong></a></li>
+    <li class="divider"></li>
+    {% for i in all_slam %}
+    {% if cm|add:"0" ==  i.dob|date:"m"|add:"0" and cd|add:"0" == i.dob|date:"d"|add:"0" %}
+            <li><a href="/myslambook/{{ i.id }}">{{i.name}} on {{i.dob|date:"d-M"}}</a></li>
+    {% endif %}
+    {% endfor %}
+    <li class="divider"></li>
+    <li class="divider"></li>
+    <li><a><strong>Tomorrow</strong></a></li>
+    <li class="divider"></li>
+    {% for i in all_slam %}
+    {% if cm|add:"0" ==  i.dob|date:"m"|add:"0" and cd|add:"1" == i.dob|date:"d"|add:"0" %}
+            <li><a href="/myslambook/{{ i.id }}">{{i.name}} on {{i.dob|date:"d-M"}}</a></li>
+    {% endif %}
+    {% endfor %}
+    <li class="divider"></li>
+    <li class="divider"></li>
+    <li><a><strong>This Month</strong></a></li>
+    <li class="divider"></li>
+    {% for i in all_slam %}
+    {% if cm|add:"0" ==  i.dob|date:"m"|add:"0" and cd|add:"0" > i.dob|date:"d"|add:"0" %}
+            <li><a href="/myslambook/{{ i.id }}">{{i.name}} on {{i.dob|date:"d-M"}} (Passed)</a></li>
+    {% endif %}
+    {% endfor %}
+    {% for i in all_slam %}
+    {% if cm|add:"0" ==  i.dob|date:"m"|add:"0" and cd|add:"1" < i.dob|date:"d"|add:"0" %}
+            <li><a href="/myslambook/{{ i.id }}">{{i.name}} on {{i.dob|date:"d-M"}} (Upcomming)</a></li>
+    {% endif %}
+    {% endfor %}
+    <li class="divider"></li>
+    <li class="divider"></li>
+    <li><a><strong>Next Month</strong></a></li>
+    <li class="divider"></li>
+    {% for i in all_slam %}
+    {% if cm|add:"1" ==  i.dob|date:"m"|add:"0" %}
+            <li><a href="/myslambook/{{ i.id }}">{{i.name}} on {{i.dob|date:"d-M"}}</a></li>
+    {% endif %}
+    {% endfor %}
+    <li class="divider"></li>
+    <li class="divider"></li>
+    <li><a href="/myslambook/birthdays"><i class="material-icons left">cake</i>View All Birthdays</a></li>
+    {% else %}
+    <li><a>No Birthdays Avilable</a></li>
+    {% endif %}
+  </ul>
+
+  <ul id='dropdown2' class='dropdown-content'>
+      <li><a><i class="material-icons left">cake</i>Birthdays</a></li>
+    <li class="divider"></li>
+    <li class="divider"></li>
+    {% if all_slam %}
+    <li class="divider"></li>
+    <li><a><strong>Today</strong></a></li>
+    <li class="divider"></li>
+    {% for i in all_slam %}
+    {% if cm|add:"0" ==  i.dob|date:"m"|add:"0" and cd|add:"0" == i.dob|date:"d"|add:"0" %}
+            <li><a href="/myslambook/{{ i.id }}">{{i.name}} on {{i.dob|date:"d-M"}}</a></li>
+    {% endif %}
+    {% endfor %}
+    <li class="divider"></li>
+    <li class="divider"></li>
+    <li><a><strong>Tomorrow</strong></a></li>
+    <li class="divider"></li>
+    {% for i in all_slam %}
+    {% if cm|add:"0" ==  i.dob|date:"m"|add:"0" and cd|add:"1" == i.dob|date:"d"|add:"0" %}
+            <li><a href="/myslambook/{{ i.id }}">{{i.name}} on {{i.dob|date:"d-M"}}</a></li>
+    {% endif %}
+    {% endfor %}
+    <li class="divider"></li>
+    <li class="divider"></li>
+    <li><a><strong>This Month</strong></a></li>
+    <li class="divider"></li>
+    {% for i in all_slam %}
+    {% if cm|add:"0" ==  i.dob|date:"m"|add:"0" and cd|add:"0" > i.dob|date:"d"|add:"0" %}
+            <li><a href="/myslambook/{{ i.id }}">{{i.name}} on {{i.dob|date:"d-M"}} (Passed)</a></li>
+    {% endif %}
+    {% endfor %}
+    {% for i in all_slam %}
+    {% if cm|add:"0" ==  i.dob|date:"m"|add:"0" and cd|add:"1" < i.dob|date:"d"|add:"0" %}
+            <li><a href="/myslambook/{{ i.id }}">{{i.name}} on {{i.dob|date:"d-M"}} (Upcomming)</a></li>
+    {% endif %}
+    {% endfor %}
+    <li class="divider"></li>
+    <li class="divider"></li>
+    <li><a><strong>Next Month</strong></a></li>
+    <li class="divider"></li>
+    {% for i in all_slam %}
+    {% if cm|add:"1" ==  i.dob|date:"m"|add:"0" %}
+            <li><a href="/myslambook/{{ i.id }}">{{i.name}} on {{i.dob|date:"d-M"}}</a></li>
+    {% endif %}
+    {% endfor %}
+    <li class="divider"></li>
+    <li class="divider"></li>
+    <li><a href="/myslambook/birthdays"><i class="material-icons right">cake</i>View All Birthdays</a></li>
+    {% else %}
+    <li><a>No Birthdays Avilable</a></li>
+    {% endif %}
+    </ul>
+
+    <div class="row">
+        <div class="col s12 m3">
+            <div class="card blue" >
+              <div class="card-content white-text">
+                <span class="card-title"><i class="material-icons left">cake</i> Birthday Remainder</span>
+                <ul>
+                      <li class="divider"></li>
+                      {% if all_slam %}
+    <li class="divider"></li>
+    <hr style="height: 20px; border: 0px">
+    <li><strong>Today</strong></li>
+    <li class="divider"></li>
+    {% for i in all_slam %}
+    {% if cm|add:"0" ==  i.dob|date:"m"|add:"0" and cd|add:"0" == i.dob|date:"d"|add:"0" %}
+            <li><a style="color: white" href="/myslambook/{{ i.id }}">{{i.name}} on {{i.dob|date:"d-M"}}</a></li>
+    {% endif %}
+    {% endfor %}
+    <li class="divider"></li> 
+    <hr style="height: 20px; border: 0px">  
+    <li><strong>Tomorrow</strong></li>
+    <li class="divider"></li>
+    {% for i in all_slam %}
+    {% if cm|add:"0" ==  i.dob|date:"m"|add:"0" and cd|add:"1" == i.dob|date:"d"|add:"0" %}
+            <li><a style="color: white" href="/myslambook/{{ i.id }}">{{i.name}} on {{i.dob|date:"d-M"}}</a></li>
+    {% endif %}
+    {% endfor %}
+    <li class="divider"></li>
+    <hr style="height: 20px; border: 0px">
+    <li><strong>This Month</strong></li>
+    <li class="divider"></li>
+    {% for i in all_slam %}
+    {% if cm|add:"0" ==  i.dob|date:"m"|add:"0" and cd|add:"0" > i.dob|date:"d"|add:"0" %}
+            <li><a style="color: white" href="/myslambook/{{ i.id }}">{{i.name}} on {{i.dob|date:"d-M"}} (Passed)</a></li>
+    {% endif %}
+    {% endfor %}
+    {% for i in all_slam %}
+    {% if cm|add:"0" ==  i.dob|date:"m"|add:"0" and cd|add:"1" < i.dob|date:"d"|add:"0" %}
+            <li><a style="color: white" href="/myslambook/{{ i.id }}">{{i.name}} on {{i.dob|date:"d-M"}} (Upcomming)</a></li>
+    {% endif %}
+    {% endfor %}
+    <li class="divider"></li>
+    <hr style="height: 20px; border: 0px">
+    <li><strong>Next Month</strong></li>
+    <li class="divider"></li>
+    {% for i in all_slam %}
+    {% if cm|add:"1" ==  i.dob|date:"m"|add:"0" %}
+            <li><a style="color: white" href="/myslambook/{{ i.id }}">{{i.name}} on {{i.dob|date:"d-M"}}</a></li>
+    {% endif %}
+    {% endfor %}
+    <li class="divider"></li>
+    <hr style="height: 20px; border: 0px">
+    <li><a style="color: white" href="/myslambook/birthdays"><i class="material-icons">cake</i><strong> View All Birthdays</strong></a></li>
+    {% else %}
+    <hr style="height: 20px; border: 0px">
+    <li><a style="color: white">No Birthdays Avilable</a></li>
+    {% endif %}
+                </ul>
+              </div>
+            </div>
+          </div>
+            {% if all_slam %}
+              {% for slam in all_slam %}
+                <div class="col s12 m3">
+                  <div class="card">
+                    <div class="card-image">
+                        <img src="/media/{{slam.photo}}" alt="Image" style="width: 100%; height: 200px;"/>
+                      <a href="/myslambook/{{ slam.id }}" class="btn-floating halfway-fab waves-effect waves-light blue"><i class="material-icons">open_in_new</i></a>
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title">{{slam.name}}</span>
+                      <p><i class="material-icons prefix">phone</i> {{slam.phone}}</p>
+                    </div>
+                  </div>
+                </div>
+              {% endfor %}
+            {% else %}
+            <div class="container center-align">
+                <div class="row">
+                        <p class="grey-text"><h5><strong>None of your friend has filled your slam book</strong></h5></p>
+                        <p class="grey-text"><h6><strong>Share your link with friends or add new slam from top right corner.</strong></h6></p>
+                </div>
+            </div>
+            {% endif %}
+          </div>
+          <div class="col s12 m3">
+          
+            </div>
+
+<script>
+  $(document).ready(function() {
+    $('.xyz').dropdown({
+      inDuration: 300,
+      outDuration: 225,
+      constrainWidth: false, // Does not change width of dropdown to that of the activator
+      hover: false, // Activate on hover
+      gutter: 0, // Spacing from edge
+      belowOrigin: false, // Displays dropdown below the button
+      alignment: 'left', // Displays dropdown with edge aligned to the left of button
+      stopPropagation: false // Stops event propagation
+    }
+  );
+  });
+  $(document).ready(function() {
+    $('.xyz2').dropdown({
+      inDuration: 300,
+      outDuration: 225,
+      constrainWidth: false, // Does not change width of dropdown to that of the activator
+      hover: false, // Activate on hover
+      gutter: 0, // Spacing from edge
+      belowOrigin: false, // Displays dropdown below the button
+      alignment: 'left', // Displays dropdown with edge aligned to the left of button
+      stopPropagation: false // Stops event propagation
+    }
+  );
+  });
+</script>
+{% endblock %}
+

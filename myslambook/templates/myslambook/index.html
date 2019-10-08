@@ -1,0 +1,87 @@
+{% extends 'myslambook/base.html' %}
+
+{% block title %}My Slam Book : Home{% endblock %}
+
+{% block slideshow %}
+<style>
+* {box-sizing:border-box}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Hide the images by default */
+.mySlides {
+  display: none;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 2;
+  animation-name: fade;
+  animation-duration: 2s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+</style>
+{% endblock %}
+
+{% block body %} 
+
+    <div class="container center-align">
+        <div class="row">
+                <br/>
+                <div class="slideshow-container">
+                        <div class="mySlides fade">
+                          <img src="/media/1.jpg" style="width:100%">
+                        </div>
+                      
+                        <div class="mySlides fade">
+                          <img src="/media/2.jpg" style="width:100%">
+                        </div>
+                      
+                        <div class="mySlides fade">
+                          <img src="/media/3.jpg" style="width:100%">
+                        </div>
+                </div>
+                <br>
+                <strong><h4><i>Memory never dies, we belive in saving memories..........</i></h4></strong>
+                <p>
+                    You may forget a person but not a moment you spent with them, this online slam book will help you to 
+                    keep in touch with your beloved ones. Share a link with your beloved and ask them to fill your slam book. 
+                    You can easily manage all slam book data filled by your beloved in your dashboard. So what are you waiting for, 
+                    Just create an account and start saving memories.
+                </p>
+        </div>
+    </div>
+    <script>
+        var slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  var i;
+  var slides = document.getElementsByClassName("mySlides");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}
+  slides[slideIndex-1].style.display = "block";
+  setTimeout(showSlides, 4000); // Change image every 2 seconds
+}
+    </script>
+
+{% endblock %}

@@ -1,0 +1,148 @@
+{% extends 'myslambook/base.html' %}
+
+{% block title %}My Slam Book : Add New{% endblock %}
+
+{% block body %}
+<div class="container center-align">
+    <div class="row">
+            <p class="grey-text"><h5><strong>{{name}} is requesting you to fill the slam book</strong></h5></p>
+            <form class="col s12" name="slambook" action="" method="POST" enctype="multipart/form-data" onsubmit="return(putuser());">
+                        {% csrf_token %}
+                        <input type="hidden" value="{{username}}" name="user" id="id_user">
+                        <div class="row">
+                        <div class="file-field input-field">
+                                <div class="btn">
+                                  <span>Upload Your Photo</span>
+                                  {{form.photo}}
+                                </div>
+                                <div class="file-path-wrapper">
+                                  <input class="file-path validate" type="text">
+                                </div>
+                        </div>
+                        </div>
+                        <div class="row">
+                                <div class="input-field col s6">
+                                        {{form.name}}
+                                <label for="name">Full Name</label>
+                                </div>
+                                
+                                <div class="input-field col s6">
+                                        {{form.dob}}
+                                </div>
+                        </div>
+                        <div class="row">
+                                <div class="input-field col s6">
+                                        {{form.gender}}
+                                </div>
+                                <div class="input-field col s6">
+                                        {{form.zodic}}
+                                <label for="zodiac">Zodiac Sign</label>
+                                </div>
+                        </div>
+                        <div class="row">
+                                <div class="input-field col s6">
+                                        {{form.phone}}
+                                <label for="phone">Phone Number</label>
+                                </div>
+                                <div class="input-field col s6">
+                                        {{form.email}}
+                                <label for="email">Email Address</label>
+                                </div>
+                                </div>
+                                <div class="row">
+                                        <div class="input-field col s6">
+                                                {{form.facebook}}
+                                        <label for="facebook">Facebook Username</label>
+                                        </div>
+                                        <div class="input-field col s6">
+                                                {{form.instagram}}
+                                        <label for="instagram">Instagram Username</label>
+                                        </div>
+                                </div>
+                                <div class="row">
+                                        <div class="input-field col s6">
+                                                {{form.twitter}}
+                                        <label for="twitter">Twitter Username</label>
+                                        </div>
+                                        <div class="input-field col s6">
+                                                {{form.address}}
+                                        <label for="address">Residential Address</label>
+                                        </div>
+                                </div>
+                                <div class="row">
+                                        <div class="input-field col s6">
+                                                {{form.nick1}}
+                                        <label for="nick1">Nick Name for me</label>
+                                        </div>
+                                        <div class="input-field col s6">
+                                                {{form.nick2}}
+                                        <label for="nick2">Nick Name for you</label>
+                                        </div>
+                                </div>
+                                <div class="row">
+                                        <div class="input-field col s6">
+                                                {{form.skils}}
+                                        <label for="skills">Your Skills</label>
+                                        </div>
+                                        <div class="input-field col s6">
+                                                {{form.occupation}}
+                                        <label for="occupation">Occupation</label>
+                                        </div>
+                                </div>
+                                <div class="row">
+                                        <div class="input-field col s6">
+                                                {{form.food}}
+                                        <label for="food">Your Favourite Food</label>
+                                        </div>
+                                        <div class="input-field col s6">
+                                                {{form.color}}
+                                        <label for="color">Your Favourite Colour</label>
+                                        </div>
+                                </div>
+                                <div class="row">
+                                        <div class="input-field col s6">
+                                                {{form.music}}
+                                        <label for="music">Your Favourite Music</label>
+                                        </div>
+                                        <div class="input-field col s6">
+                                                {{form.movie}}
+                                        <label for="movie">Your Favourite Movie</label>
+                                        </div>
+                                </div>
+                                <div class="row">
+                                        <div class="input-field col s6">
+                                                {{form.actor}}
+                                        <label for="actor">Your Favourite Actor</label>
+                                        </div>
+                                        <div class="input-field col s6">
+                                                {{form.actress}}
+                                        <label for="actress">Your Favourite Actress</label>
+                                        </div>
+                                </div>
+                                <div class="row">
+                                        <div class="input-field col s6">
+                                                {{form.sport}}
+                                        <label for="sport">Your Favourite Sport</label>
+                                        </div>
+                                        <div class="input-field col s6">
+                                                {{form.person}}
+                                        <label for="person">Your Favourite Person</label>
+                                        </div>
+                                </div>
+                                <div class="row">
+                                        <div class="input-field col s6">
+                                                {{form.place}}
+                                        <label for="place">Your Favourite Place</label>
+                                        </div>
+                                        <div class="input-field col s6">
+                                                {{form.desc}}
+                                        <label for="desc">Write Something About You</label>
+                                        </div>
+                                </div>
+                                <div class="row">
+                                <button class="btn waves-effect waves-light" type="submit" name="action">Submit</button>
+                                </div>      
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}{% endblock %}</title>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+        <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    
+        <script>
+            $(document).ready(function () {
+          	$(".button-collapse").sideNav();
+            });
+
+            $(document).ready(function() {
+            $('select').material_select();
+            });
+            
+        </script>
+        {% block slideshow %}
+        {% endblock %}    
+    </head>
+    <body>
+        <nav class="nav-extended blue">
+    <div class="nav-wrapper">
+        <a href="/myslambook/" class="brand-logo"> <i class="material-icons">book</i>My Slam Book</a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+          {% if user.is_authenticated %}
+          <li><a href="/myslambook/dashboard"><i class="material-icons left">assignment</i>Dashboard</a></li>
+          <li><a href="/myslambook/addnewslam/{{user.username}}"><i class="material-icons left">playlist_add</i>Fill New Slam</a></li>
+          <li><a href="/myslambook/share"><i class="material-icons left">share</i>Share Your Slam Book Link</a></li>
+          {% block birthday %}{% endblock %}
+      {% else %}
+          <li><a href="/myslambook/register"><i class="material-icons left">person_add</i>Crete Account</a></li>
+          <li><a href="/myslambook/userlogin"><i class="material-icons left">person</i>Login</a></li>
+      {% endif %}
+      </ul>
+    </div>
+    <div class="nav-wrapper">
+        {% if user.is_authenticated %}
+          <ul class="right hide-on-med-and-down">
+              <li><i class="material-icons left">account_circle</i>{{user.get_full_name}}, Last Login : {{user.last_login}}</li>
+              <li><a href="/myslambook/userlogout"><i class="material-icons right">exit_to_app</i>Logout</a></li>
+          </ul>
+        {% endif %}
+        </div>
+  </nav>
+   <ul class="side-nav" id="mobile-demo">
+      {% if user.is_authenticated %}
+      <li class="divider"></li>
+      <li><a href="#"><i class="material-icons left">account_circle</i>{{user.get_full_name}}</a></li>
+      <li class="divider"></li>
+      <li><a href="/myslambook/dashboard"><i class="material-icons left">assignment</i>Dashboard</a></li>
+      <li class="divider"></li>
+      <li><a href="/myslambook/addnewslam/{{user.username}}"><i class="material-icons left">playlist_add</i>Fill New Slam</a></li>
+      <li class="divider"></li>
+      <li><a href="/myslambook/share"><i class="material-icons left">share</i>Share Your Slam Book Link</a></li>
+      {% block birthday1 %}{% endblock %}
+      <li class="divider"></li>
+      <li><a href="/myslambook/userlogout"><i class="material-icons left">exit_to_app</i>Logout</a></li>
+      <li class="divider"></li>
+      <li><a>Last Login Details</a></li>
+      <li><a>{{user.last_login}}</a></li>
+      <li class="divider"></li>
+
+  {% else %}
+      <li><a href="/myslambook/register"><i class="material-icons left">person_add</i>Crete Account</a></li>
+      <li class="divider"></li>
+      <li><a href="/myslambook/userlogin"><i class="material-icons left">person</i>Login</a></li>
+  {% endif %}
+      </ul>
+        {% block body %}
+        {% endblock %}
+        <footer class="page-footer blue">
+                <div class="container">
+                  <div class="row">
+                    <div class="col l6 s12">
+                      <h5 class="white-text">Python and MySQL database project</h5>
+                      <p class="grey-text text-lighten-4"></p>
+                    </div>
+                    <div class="col l4 offset-l2 s12">
+                      <h5 class="white-text">Contributions</h5>
+                      <ul>
+                        <li><a class="grey-text text-lighten-3" href="#!">Shubham Kumar Sharma</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="footer-copyright">
+                  <div class="container center-align">
+                  © 2019 My Slam Book
+                  </div>
+                </div>
+            </footer>
+    </body>
+</html>

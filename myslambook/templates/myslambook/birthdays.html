@@ -1,0 +1,30 @@
+{% extends 'myslambook/base.html' %}
+
+{% block title %}My Slam Book : All Birthdays{% endblock %}
+
+
+{% block body %}
+
+<div class="row">
+    {% for m in month %}
+        <div class="col s12 m3">
+          <div class="card pink" style="min-height: 300px">
+            <div class="card-content white-text">
+              <span class="card-title">{{m}}</span>
+              <ul>
+                    <li class="divider"></li>
+                    {% for i in all_slam %}
+                    {% if m ==  i.dob|date:"F" %}
+                        <li><a class="text" href="/myslambook/{{ i.id }}" style="color : white">{{i.dob|date:"d-F"}} - {{i.name}}</a></li>
+                        <li class="divider"></li>
+                    {% endif %}
+                    {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}
+

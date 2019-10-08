@@ -1,0 +1,17 @@
+{% for i in slam %}
+{{i.name}} having birthday on {{i.dob|date:"d F y"}} ---- {{ i.dob|date:"m"|add:"0"}} <br/>
+{% endfor %}
+{{forloop.revcounter}}
+{% now "m" %}
+===================== TODAY ====================<br>
+{% now "m" as cm %}
+{% now "d" as cd %}
+{% for i in slam %}
+    {% if cm ==  i.dob|date:"m" and cd == i.dob|date:"d"%}
+            {{i.name}}
+            {{forloop.revcounter}}
+    {% endif %}
+{% endfor %}
+
+
+

@@ -1,0 +1,253 @@
+{% extends 'myslambook/base.html' %}
+
+{% block title %}My Slam Book : {{slam.name}}{% endblock %}
+
+{% block slideshow %}
+<style>
+/* Style the Image Used to Trigger the Modal */
+#myImg {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#myImg:hover {opacity: 0.7;}
+
+/* The Modal (background) */
+.modal-bg {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (Image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+/* Caption of Modal Image (Image Text) - Same Width as the Image */
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+
+/* Add Animation - Zoom in the Modal */
+.modal-content, #caption {
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+  from {transform:scale(0)}
+  to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
+  }
+}
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="container center-align">
+    <div class="row">
+            <p class="grey-text"><h5><strong>Slam Book Filled By {{slam.name}}</strong></h5></p>
+            <div class="col s12">
+                        <div class="row">
+                                        <div class="col s12 m6">
+                                          <div class="card">
+                                            <div class="card-image">
+                                        <img id="myImg" src="/media/{{slam.photo}}" alt="{{slam.name}}" style="width: 100%; height: 300px;">
+                                            </div>
+                                            <div class="card-content">
+                                                        <span class="card-title">{{slam.name}}</span>
+                                            </div>
+                                          </div>
+                                        </div>
+                                <div class="input-field col s6">
+                                <input type="text" value="{{slam.dob}}" disabled>
+                                <label for="date">Date of Birth</label>
+                                </div>
+                                <div class="input-field col s6">
+                                <input type="text" value="{{slam.gender}}" disabled>
+                                <label for="gender">Gender</label>
+                                </div>
+                                <div class="input-field col s6">
+                                <input type="text" value="{{slam.zodic}}" disabled>
+                                <label for="zodiac">Zodiac Sign</label>
+                                </div>
+                                <div class="input-field col s6">
+                                <input type="text" value="{{slam.phone}}" disabled>
+                                <label for="phone">Phone Number</label>
+                                </div>
+                                <div class="input-field col s6">
+                                <input type="text" value="{{slam.email}}" disabled>
+                                <label for="email">Email Address</label>
+                                </div>
+                                </div>
+                                <div class="row">
+                                        <div class="input-field col s6">
+                                        <input type="text" value="{{slam.facebook}}" disabled>
+                                        <label for="facebook">Facebook Username</label>
+                                        </div>
+                                        <div class="input-field col s6">
+                                        <input type="text" value="{{slam.instagram}}" disabled>
+                                        <label for="instagram">Instagram Username</label>
+                                        </div>
+                                </div>
+                                <div class="row">
+                                        <div class="input-field col s6">
+                                        <input type="text" value="{{slam.twitter}}" disabled>
+                                        <label for="twitter">Twitter Username</label>
+                                        </div>
+                                        <div class="input-field col s6">
+                                        <input type="text" value="{{slam.address}}" disabled>
+                                        <label for="address">Residential Address</label>
+                                        </div>
+                                </div>
+                                <div class="row">
+                                        <div class="input-field col s6">
+                                        <input type="text" value="{{slam.nick1}}" disabled>
+                                        <label for="nick1">Nick Name for me</label>
+                                        </div>
+                                        <div class="input-field col s6">
+                                        <input type="text" value="{{slam.nick2}}" disabled>
+                                        <label for="nick2">Nick Name for you</label>
+                                        </div>
+                                </div>
+                                <div class="row">
+                                        <div class="input-field col s6">
+                                        <input type="text" value="{{slam.skils}}" disabled>
+                                        <label for="skills">Your Skills</label>
+                                        </div>
+                                        <div class="input-field col s6">
+                                        <input type="text" value="{{slam.occupation}}" disabled>
+                                        <label for="occupation">Occupation</label>
+                                        </div>
+                                </div>
+                                <div class="row">
+                                        <div class="input-field col s6">
+                                        <input type="text" value="{{slam.food}}" disabled>
+                                        <label for="food">Your Favourite Food</label>
+                                        </div>
+                                        <div class="input-field col s6">
+                                        <input type="text" value="{{slam.color}}" disabled>
+                                        <label for="color">Your Favourite Colour</label>
+                                        </div>
+                                </div>
+                                <div class="row">
+                                        <div class="input-field col s6">
+                                        <input type="text" value="{{slam.music}}" disabled>
+                                        <label for="music">Your Favourite Music</label>
+                                        </div>
+                                        <div class="input-field col s6">
+                                        <input type="text" value="{{slam.movie}}" disabled>
+                                        <label for="movie">Your Favourite Movie</label>
+                                        </div>
+                                </div>
+                                <div class="row">
+                                        <div class="input-field col s6">
+                                        <input type="text" value="{{slam.actor}}" disabled>
+                                        <label for="actor">Your Favourite Actor</label>
+                                        </div>
+                                        <div class="input-field col s6">
+                                        <input type="text" value="{{slam.actress}}" disabled>
+                                        <label for="actress">Your Favourite Actress</label>
+                                        </div>
+                                </div>
+                                <div class="row">
+                                        <div class="input-field col s6">
+                                        <input type="text" value="{{slam.sport}}" disabled>
+                                        <label for="sport">Your Favourite Sport</label>
+                                        </div>
+                                        <div class="input-field col s6">
+                                        <input type="text" value="{{slam.person}}" disabled>
+                                        <label for="person">Your Favourite Person</label>
+                                        </div>
+                                </div>
+                                <div class="row">
+                                        <div class="input-field col s6">
+                                        <input type="text" value="{{slam.place}}" disabled>
+                                        <label for="place">Your Favourite Place</label>
+                                        </div>
+                                        <div class="input-field col s6">
+                                        <input type="text" value="{{slam.desc}}" disabled>
+                                        <label for="desc">Write Something About You</label>
+                                        </div>
+                                </div>
+                                <div class="row">
+                                <form  action="/myslambook/delete" method="POST" onsubmit="return(confirm('Are you sure to delete this slam data?'))">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="id" id="id" value="{{slam.id}}">
+                                <button  class="btn waves-effect red" type="submit" name="action">Delete This Slam Data</button>
+                                </form>
+                                </div>      
+                            </div>
+        </div>
+    </div>
+<div id="myModal" class="modal-bg">
+<span class="close">&times;</span>
+<img class="modal-content" id="img01">
+<div id="caption">{{slam.name}}</div>
+</div>
+
+<script>
+var modal = document.getElementById("myModal");
+
+// Get the image and insert it inside the modal - use its "alt" text as a caption
+var img = document.getElementById("myImg");
+var modalImg = document.getElementById("img01");
+var captionText = document.getElementById("caption");
+img.onclick = function(){
+  modal.style.display = "block";
+  modalImg.src = this.src;
+  captionText.innerHTML = this.alt;
+}
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+</script>
+{% endblock %}

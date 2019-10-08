@@ -1,0 +1,39 @@
+{% extends 'myslambook/base.html' %}
+
+{% block title %}My Slam Book : Login{% endblock %}
+
+
+
+{% block body %}            
+
+<div class="container center-align">
+    <div class="row">
+            <p class="grey-text"><h5><strong>Login To Your Account</strong></h5></p>
+                <div class="row">
+                    <form class="col s12" action="" method="POST">
+                            {% csrf_token %}
+                    <div class="row">
+                        <div class="input-field col s6">
+                        {{form.username}}
+                        <label for="username">Username</label>
+                        <span class="red-text">{{form.errors.username}}</span>
+                        </div>
+                        <div class="input-field col s6">
+                        {{form.password}}
+                        <label for="password">Password</label>
+                        <span class="red-text">{{form.errors.password}}</span>
+                        </div>
+                    </div>
+                    <div class="row right-align" >
+                            <a href="/myslambook/register">
+                            <button class="btn waves-effect green" type="button" name="action">Don't Have an Account? Register Here</button>
+                            </a>
+                            <button class="btn waves-effect blue" type="submit" name="action">Login</button>
+                    </div>
+                    </form>
+                </div>
+                
+    </div>
+</div>
+
+{% endblock %}
